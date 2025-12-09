@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/usdgc.css">
+    <link rel="stylesheet" href="../CSS/edit.css">
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js" defer></script>
+    <script src="../JS/sprint.js" defer></script>
+    <script src="../JS/edit.js" defer></script>
+    <!--<script src="../JS/sprint.js"></script>-->
+    
+    <title>United States Disc Golf Championship</title>
+</head>
+<!-- added class to body so its different from php body , to help avoid the js to override the php -->
+
+ <body class="usdgc-page">
+    <header>
+        <!--left part of nav/logo-->
+        <nav class="topbar">
+            <a class="brand" href="/">
+                <img id='logo' src="https://www.pdga.com/sites/all/themes/pdga/logo.png" alt="pdga logo" />
+            </a>
+
+            <!--middle part of nav-->
+            <ul class="mainnav">
+                <li><a class="btn" href="https://www.pdga.com/" target="_blank">Home</a></li>
+                <li><a class="btn" href="https://www.pdga.com/membership" target="_blank">Membership</a></li>
+                <li><a class="btn" href="https://www.pdga.com/tour/events" target="_blank">Events</a></li>
+                <li><a class="btn" href="https://discgolfunited.com/usdgc" target="_blank">Shop</a></li>
+                <li><a class="btn" href="https://www.pdga.com/user/login?destination=course-directory">Login</a>
+                </li>
+            </ul>
+            <!-- right side of nav search + hamburger icon-->
+            <div class="actions">
+                <!--search icon-->
+                <button class="icon-btn" id="searchToggle" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+
+                <!-- hidden search bar -->
+                <div class="search-box" id="searchBox">
+                    <form action="https://www.pdga.com/search" method="get" target="_blank">
+                        <input type="search" id="searchInput" name="keywords" placeholder="Search PDGA…" />
+                    </form>
+                </div>
+            </div>
+
+            <!-- HAMBURGER MENU + DROPDOWN -->
+            <div class="menu-wrapper">
+                <button class="icon-btn menu-toggle" aria-label="Menu" aria-expanded="false">
+                    <!-- hamburger -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+
+                <!--additonal buttons-->
+                <div class="menu-dropdown" role="menu">
+                    <a href="https://www.pdga.com/introduction" role="menuitem">About</a>
+                    <a href="https://www.pdga.com/rules" role="menuitem">Rules</a>
+                    <a href="https://www.pdga.com/international" role="menuitem">International</a>
+                    <a href="https://www.pdga.com/course-directory" role="menuitem">Courses</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- main event section-->
+    <div id='page'>
+        <section id='content'>
+            <div id='panel'>
+
+                <div id="searchEdit">
+                    <!-- Search Bar -->
+                    <div id = "searchBar">
+                        <input id='mainSearchInput' type="text" placeholder="Search...">
+                        <div id="mainSuggestionsContainer"></div>
+                    </div>
+                    <!-- Edit Button -->
+                     <button id = 'editButton' data-event-title="USDGC">Edit</button>
+                </div>
+
+                <div id='top'>
+                    <img id='event_logo' width=100px
+                        src="https://www.usdgc.com/wp-content/uploads/2024/02/USDGC-2024-logo.png" />
+                    <div id='event_header'>
+                        <h1 id='event_title'>United States Disc Golf Championship </h1>
+                        <h2 id='event_subtitle'></h2>
+                        <h3 id='event_location'>Rock Hill, South Carolina, United States</h3>
+                        <h4 id='event_director'>Directed by Jonathan Poole</h4>
+                    </div>
+                                    <!-- about paragraph--->
+                                            </div> <!-- end of #top -->
+
+        <!-- About + Event Snapshot  -->
+        <section class="usdgc-intro">
+    
+          <!-- EVENT SNAPSHOT  -->
+          <ul id="eventSnapshot">
+            <li class="stat">
+              <strong>Total Purse (1999–2025):</strong>
+              <span class="value">$1,480,241</span>
+            </li>
+            <li class="stat">
+              <strong>Iterations Counted:</strong>
+              <span class="value">26</span>
+            </li>
+             <li class="stat">
+              <strong>Total Players:</strong>
+              <span class="value"></span>
+            </li>
+          </ul>
+        </section>
+
+      
+            
+
+                <!--upcoming event section-->
+               <h5>Upcoming Event</h5>
+            <div id="upcoming">
+  <!--<h5>Upcoming Event</h5>-->
+  <div id="up_events">
+    <table id="upcoming_table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Date</th>
+          <th>Pro Purse</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2026 United States Disc Golf Championship</td>
+          <td>October 8–11, 2026</td>
+          <td>TBD</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+            
+                <!--end of event section-->
+                
+                <!-- scalable table for usdgc past events-->
+            <section class="cardWinner">
+           <h5>USDGC Events </h5>
+          <!-- Wrapper added -->
+                    <div class="table-wrapper">
+                        <table id="events">
+                            <thead></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <!-- End Wrapper -->
+          </section>
+          
+          <!--  scalable table for winners-->
+          <section class="cardChampions">
+    <h5>USDGC Champions </h5>
+    <!-- Wrapper added -->
+                    <div class="table-wrapper">
+                        <table id="usdgc_champions">
+                            <thead>
+                                <tr>
+                                    <th>Year</th>
+                                    <th>Winner</th>
+                                    <th>PDGA #</th>
+                                    <th>Total</th>
+                                    <th>Cash</th>
+                                    <th>PDGA</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <!-- End Wrapper -->
+    </section>
+    
+                
+        <!-- graph section-->
+          <section class="graphs">
+            <div class="graphcontainer">
+                <figure>
+                    <h3>Total Prize Purse by Year (USDGC)</h3>
+                    <!-- ECharts container -->
+                    <div id="cashChart"></div>
+                    <figcaption>Total prize purse for USDGC by year</figcaption>
+                </figure>
+                <figure>
+                    <h3>Average Total Score by Year (USDGC)</h3>
+                    <!-- ECharts container -->
+                    <div id="ratingChart"></div>
+                    <figcaption>Average total score for USDGC by year</figcaption>
+                </figure>
+                <!--new changes -->
+                        <figure>
+                            <h3>Field Size (Players) by Year (USDGC)</h3>
+                            <div id="playersChart"></div>
+                            <figcaption>Number of unique players per year</figcaption>
+                        </figure>
+            </div>
+        </section>
+        <!--new changes added -->
+                <style>
+                    .graphcontainer #cashChart,
+                    .graphcontainer #ratingChart,
+                    .graphcontainer #playersChart {
+                        width: 100%;
+                        height: 320px;
+                    }
+                </style>
+
+    <!-- PapaParse + ECharts -->
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+        <!--end of graph section-->
+        
+            <!-- About section -->
+              <section id="about" class="about-card">
+                  <header class="about-card-head">
+                      <h3>About</h3>
+                      <p class="about-card-summary">
+                       Since 1999, the United States Disc Golf Championship (USDGC) has been held at Winthrop University’s
+                iconic course in Rock Hill, South Carolina. Founded by Harold Duvall, Jonathan Poole, and Dave Dunipace,
+                the event set a new standard for elite disc golf. With its single-division format, challenging course,
+                and rigorous qualifying path, the USDGC remains one of the sport’s most prestigious and influential tournaments.
+                      </p>
+                  </header>
+              </section>
+              
+         <!--special year -->
+            <section id="usdgc-2011" class="year-card">
+                <header class="year-card__head">
+                  <h3>Special Edition - 2011 USDGC </h3>
+                  <!--<time datetime="2011-10-05" aria-label="October 5, 2011">Oct 5, 2011</time>-->
+                </header>
+                <p class="year-card__byline">By Andrew Big Dog Sweeton</p>
+                <p class="year-card__summary">
+                    The 2011 United States Disc Golf Championship was a milestone year. 122 players from the U.S., Canada, 
+                    and Finland took on the Winthrop Gold Course in Rock Hill, South Carolina.
+                    That year introduced a new performance-based format, where players competed against their own
+                     PDGA ratings instead of each other—allowing competitors of all skill levels to shine.
+                </p>
+                <details class="year-card__more">
+                  <summary>More</summary>
+                  <ul>
+                    <li>Course: Winthrop Gold, famed for miles of yellow OB rope.</li>
+                    <li>Traditions intact: 100+ volunteers, Sammy Poole’s homemade ice cream, and full USDGC pageantry.</li>
+                    <li>Champions on site: Ken Climo, Dave Feldberg, Barry Schultz.</li>
+                  </ul>
+                </details>
+              </section>
+              <!--end ofspecial year -->
+              
+              
+                <!-- where to watch section-->
+             <section class="watch">
+                <h5>Where To Watch </h5>
+                <ul id="broadcasting">
+                    <li>
+                        <a class="has-icon" href="https://www.youtube.com/discgolfprotour">
+                          <img class="brand-icon" src="https://cdn-icons-png.flaticon.com/128/1384/1384060.png" alt="" aria-hidden="true">
+                          YouTube
+                        </a>
+                      </li>
+                      <li>
+                        <a class="has-icon" href="https://www.discgolfnetwork.com/">
+                          <img class="brand-icon" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/fa/Disc_Golf_Pro_Tour_Logo.svg/1200px-Disc_Golf_Pro_Tour_Logo.svg.png" alt="" aria-hidden="true">
+                          Disc Golf Network
+                        </a>
+                      </li>
+                </ul>
+             </section>
+             <!-- end of where to watch section -->
+             
+                <!--course map inspo from f1-->
+             <section class="map">
+               <h5>Course Map</h5>
+                <img class="course" src="https://aicdn.speedsize.com/62622a11-79be-46d0-9102-89bd0135d832/usdgc.com/wp-content/uploads/2025/10/NSEW-Winthrop_map-Championship-Village-scaled.png" alt="course map">
+             </section>
+             <!--end of course map section -->
+             
+             
+                 <!-- all events search events --> 
+    <section class="cardAllEvents">
+        <h5>All PDGA Events</h5>
+        <!-- search bar-->
+        <div class="toolbar" style="display:flex;gap:8px;align-items:center;margin:8px 0;">
+  <input id="all_events_q" type="search"
+         placeholder="Search event, city, state, country, tier, or year"
+         style="flex:1;min-width:220px;padding:8px;border:1px solid #ccc;border-radius:6px;">
+  <button id="all_events_prev">Prev</button>
+  <span id="all_events_pageinfo">Page 1/1</span>
+  <button id="all_events_next">Next</button>
+</div>
+  <table id="all_events">
+    <thead>
+      <tr>
+        <th>Year</th>
+        <th>Event</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Country</th>
+        <th>Tier</th>
+        <th>PDGA</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <p id="all_events_msg" class="msg"></p>
+</section>
+
+              
+               <!-- FEATURED EVENTS AREA (Seadrah) )-->
+
+      <!-- On main page (BEFORE edit form) -->
+<section id="featured_events">
+    <h2>Featured Events</h2>
+    <div class="featured-empty">
+        <p>No featured events yet</p>
+        <small>Use the Edit button to add events to this section</small>
+    </div>
+</section>
+
+        <!-- EDIT EVENT AREA (Seadrah) )-->
+
+        <h1 id="page_title">Edit Event</h1>
+        <form id="event_form" name = "event_form" method="post">
+        
+            <div id="logo_upload_wrapper">
+                <div id="img_wrap">
+                    <img 
+                        id="event_logo_input" 
+                        src="../image/placeholder_logo.png" 
+                        alt="Event Logo"
+                    />
+                </div>
+                <input type="file" id="logo_upload_input" accept="image/*" style="display: none;">
+                <button type="button" id="reset_logo_btn" style="display: none;">Reset</button>
+            </div>
+
+            <div class="mb-5 row">
+                <div class="col">
+                    <label>Title</label>
+                    <input type="text" maxlength="50" class="form-control" id="event_title_input" name="event_title_input">
+                </div>
+                <div class="col">
+                    <label>Type</label>
+                    <div id = 'subtitle_checkboxes'>
+                        <div id="pro">
+                            <label for="pro">Pro</label>
+                            <input type="radio" name="subt" value = "Pro">
+                        </div>
+                        <div id="pro-am">
+                            <label for="pro-am">Pro-Am</label>
+                            <input type="radio" name="subt" value="Pro-Am">
+                        </div>
+                        <div id="am">
+                            <label for="am">Am</label>
+                            <input type="radio" name="subt" value="Am">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-5 row">
+                <div class="col">
+                    <label for="location">Location</label>
+                    <input type="location" maxlength="50" class="form-control" id="location" name="location">
+                </div>
+                <div class="col">
+                    <label for="director_input">Director</label>
+                    <input type="tel" maxlength="50" class="form-control" id="director_input" name="director_input">
+                </div>
+            </div>
+            <div class="mb-5">
+                <label for="message">Description</label>
+                <textarea class="form-control" id="message" name="message" rows="5"></textarea>
+            </div>
+    
+
+            <h2 id="featured_events_edit">Featured Events</h2>
+            <div class="dbwinnertable_edit">
+             <!-- JS populates this -->
+            </div>
+
+            <button type="submit" class="btn btn-primary px-4 btn-lg">Submit</button>
+        
+        </form>
+
+        <footer>
+            <div class="pane-content">
+                <img class="pdga-icon"
+                    src="https://www.pdga.com/live/assets/pdga-favicon-green-white-transparent-7j3InFjR.svg"
+                    alt="pdga logo">
+                <p>Copyright © 1998-2025. Professional Disc Golf Association. All
+                    Reserved.</p>
+                <p>3828 Dogwood Lane, Appling, GA, USA 30802-3012 &mdash;
+                    Phone:&nbsp;+1-706-261-6342</p>
+                <ul class="footermedia">
+                    <li><a class="btn" href="https://www.instagram.com/pdga/?hl=en" target="_blank">Instagram</a></li>
+                    <li><a class="btn" href="https://www.facebook.com/pdga/" target="_blank">Facebook</a></li>
+                    <li><a class="btn" href="https://x.com/pdga" target="_blank">X</a></li>
+                    <li><a class="btn" href="https://www.linkedin.com/groups?gid=31030" target="_blank">LinkedIn</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>
